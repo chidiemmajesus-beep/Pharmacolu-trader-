@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080d18">
+  <title>PHARMACOLU TRADER</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark">P</span><div><strong>PHARMACOLU</strong><small>TRADER</small></div></div>
+    <div class="top-actions"><span class="market-status"><i></i> MARKET WATCH</span><button id="refreshBtn" class="outline">Refresh</button></div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div><p class="eyebrow">TRADING TERMINAL</p><h1>Trade smarter.<br><em>Learn the markets.</em></h1><p class="muted">A mobile-first trading dashboard with practice trading and market-watch tools.</p></div>
+      <div class="mode-switch"><button class="mode active" data-mode="demo">DEMO</button><button class="mode" data-mode="markets">LIVE MARKET</button><button class="mode" data-mode="real">REAL TRADING</button></div>
+    </section>
+
+    <section id="demoPanel">
+      <div class="stats">
+        <article class="stat"><span>DEMO BALANCE</span><strong id="balance">$10,000.00</strong><small>Virtual funds only</small></article>
+        <article class="stat"><span>EQUITY</span><strong id="equity">$10,000.00</strong><small>Balance + open P/L</small></article>
+        <article class="stat"><span>OPEN POSITIONS</span><strong id="openCount">0</strong><small>Practice trades</small></article>
+        <article class="stat"><span>REALIZED P/L</span><strong id="realized">$0.00</strong><small>Closed demo trades</small></article>
+      </div>
+      <div class="grid">
+        <section class="panel chart-panel">
+          <div class="panel-head"><div><span class="eyebrow">PRICE CHART</span><h2 id="chartTitle">BTC / USD</h2></div><select id="symbolSelect"><option value="BTCUSD">BTC/USD</option><option value="ETHUSD">ETH/USD</option><option value="EURUSD">EUR/USD</option><option value="GBPUSD">GBP/USD</option><option value="USDJPY">USD/JPY</option></select></div>
+          <div class="chart-meta"><span id="chartPrice">$67,000.00</span><span class="positive" id="chartChange">+0.00%</span><span class="muted">Illustrative demo chart</span></div>
+          <div class="chart" id="chart"><div class="chart-grid"></div><svg id="chartSvg" viewBox="0 0 700 260" preserveAspectRatio="none" aria-label="Illustrative candlestick chart"></svg></div>
+          <div class="chart-foot"><span>1H</span><span>4H</span><span>1D</span><span>1W</span><small>Chart values are simulated for practice.</small></div>
+        </section>
+        <section class="panel order-panel">
+          <div class="panel-head"><div><span class="eyebrow">PRACTICE ORDER</span><h2>Place a demo trade</h2></div></div>
+          <label>Market</label><select id="orderSymbol"><option value="BTCUSD">BTC/USD</option><option value="ETHUSD">ETH/USD</option><option value="EURUSD">EUR/USD</option><option value="GBPUSD">GBP/USD</option><option value="USDJPY">USD/JPY</option></select>
+          <label>Amount (virtual USD)</label><input id="amount" type="number" min="1" step="1" value="100">
+          <div class="quote-box"><span>Indicative price</span><strong id="orderPrice">$67,000.00</strong></div>
+          <div class="trade-buttons"><button id="buyBtn" class="buy">BUY</button><button id="sellBtn" class="sell">SELL</button></div>
+          <p class="tiny muted">Demo orders only. No real funds or broker connection.</p>
+          <p id="orderMessage" class="message" aria-live="polite"></p>
+        </section>
+      </div>
+      <section class="panel">
+        <div class="panel-head"><div><span class="eyebrow">YOUR ACTIVITY</span><h2>Open positions</h2></div><button id="resetBtn" class="outline">Reset demo</button></div>
+        <div class="table-wrap"><table><thead><tr><th>Market</th><th>Side</th><th>Stake</th><th>Entry</th><th>Current P/L</th><th></th></tr></thead><tbody id="positions"><tr><td colspan="6" class="empty">No open demo positions yet.</td></tr></tbody></table></div>
+      </section>
+      <section class="panel">
+        <div class="panel-head"><div><span class="eyebrow">RECENT ACTIVITY</span><h2>Trade history</h2></div></div>
+        <div class="table-wrap"><table><thead><tr><th>Market</th><th>Side</th><th>Stake</th><th>Entry</th><th>Exit</th><th>Result</th></tr></thead><tbody id="history"><tr><td colspan="6" class="empty">No closed trades yet.</td></tr></tbody></table></div>
+      </section>
+    </section>
+
+    <section id="marketsPanel" class="hidden">
+      <div class="section-title"><span class="eyebrow">MARKET WATCH</span><h2>Market prices</h2><p class="muted">Crypto prices may load from CoinGecko. Forex rows use clearly marked indicative sample quotes until a licensed data provider is connected.</p></div>
+      <div class="market-grid" id="marketGrid"></div>
+      <p id="marketNotice" class="tiny muted">Loading available market data…</p>
+    </section>
+
+    <section id="realPanel" class="hidden">
+      <div class="panel real-panel"><div class="lock">⌑</div><span class="eyebrow">REAL-MONEY TRADING</span><h2>Broker connection not enabled</h2><p class="muted">This prototype does not accept deposits, hold customer funds, or send live orders. Real-money trading requires an eligible, regulated broker, appropriate legal approvals, identity checks, and secure broker-authorized integration.</p><div class="notice">For now, use Demo to practise and Live Market to view available market information. No payment details should be entered here.</div></div>
+    </section>
+  </main>
+  <footer>PHARMACOLU TRADER <span>Educational prototype · Not investment advice</span></footer>
+  <script src="app.js"></script>
+</body>
+</html>
